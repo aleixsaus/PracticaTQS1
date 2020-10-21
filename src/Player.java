@@ -2,6 +2,7 @@
 public class Player {
 
     public String insertCode() {
-        return "ABCD";
+        final Code c = new Code();
+    	return c.getCode();
     }
 }
