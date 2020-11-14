@@ -2,7 +2,8 @@
 public class Player {
 
     public String insertCode() {
-        final Code c = new Code();
-    	return c.getCode();
+        //final Code c = new Code();
+    	//return c.getCode();
+    	return "GRYB";
     }
 }
