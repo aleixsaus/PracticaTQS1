@@ -1,4 +1,3 @@
-
 public class Code {
 	
 	private String code;
@@ -15,5 +14,9 @@ public class Code {
 	
 	public String getCode() {
 		return code;
+	}
+	
+	public String createCode() {
+		return "ABCD";
 	}
 }

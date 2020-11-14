@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
    PlayerTest.class, 
    TestClue.class,
    MastermindTest.class,
+   TestCode.class,
 })
 
 public class AllTests {  

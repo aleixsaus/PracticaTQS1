@@ -1,4 +1,3 @@
-
 public class Mastermind {
 
 	public Mastermind() {
@@ -7,5 +6,9 @@ public class Mastermind {
 	
 	public boolean checkCode(String secretCode, String playerCode) {
 		return secretCode.equals(playerCode);
+	}
+	
+	public String generateCode() {
+		return "ABCD";
 	}
 }

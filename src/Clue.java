@@ -1,4 +1,3 @@
-
 public class Clue {
 
 	private String clue;
