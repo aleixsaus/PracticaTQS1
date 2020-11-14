@@ -13,10 +13,11 @@ class TestCreateClue {
 	
 	@Test
 	void test() {
-		//"Green Red Yellow Blue"
-		String expectedClue = "ABCD";
+		//"Clue we should get"
+		String expectedClue = "xo--";
 		
 		String returnedClue = clue.createClue();
+		//"Check clue"
 		assertEquals(expectedClue, returnedClue);
 	}
 

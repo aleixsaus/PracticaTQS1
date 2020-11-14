@@ -7,6 +7,6 @@ public class Clue {
 	
 	public String createClue() {
 		//create a clue
-		return "ABCD";
+		return "xo--";
 	}
 }
