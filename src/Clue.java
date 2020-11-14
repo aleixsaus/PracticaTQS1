@@ -12,6 +12,10 @@ public class Clue {
 		this.clue = clue;
 	}
 	
+	public String createClue() {
+		return "xo--";
+	}
+	
 	public String getClue() {
 		return clue;
 	}

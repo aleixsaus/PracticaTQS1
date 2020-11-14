@@ -16,7 +16,7 @@ public class TestClue {
 	}
 	
 	@Test
-	public void testCreateClue() {
+	public void testGetClue() {
 		//Clue we expect from calling this method
 		String expectedClue = "xo--";
 		
@@ -26,5 +26,17 @@ public class TestClue {
 		//Check clue
 		assertEquals(expectedClue, returnedClue.getClue());
 	}
-
+	
+	@Test
+	public void testCreateClue() {
+		//Clue we should get
+		String expectedClue = "xo--";
+		
+		//Save what we get from the method
+		String returnedClue = clue.createClue();
+		
+		//Check clue
+		assertEquals(expectedClue, returnedClue);
+	}
+	
 }
