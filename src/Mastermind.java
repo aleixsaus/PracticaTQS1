@@ -11,4 +11,12 @@ public class Mastermind {
 	public String generateCode() {
 		return "ABCD";
 	}
+	
+	public void addCodeToGameBoard(String code, GameBoard gameBoard) {
+		gameBoard.addCodeRecord(code);
+	}
+	
+	public void addClueToGameBoard(String clue, GameBoard gameBoard) {
+		gameBoard.addClueRecord(clue);
+	}
 }

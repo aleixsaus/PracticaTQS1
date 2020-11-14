@@ -4,10 +4,12 @@ public class GameBoard {
 
 	private ArrayList<String> codeRecords;
 	private ArrayList<String> clueRecords;
+	
 	private String gameBoardDesign;
 	
 	public GameBoard() {
 		codeRecords = new ArrayList<String>();
+		clueRecords = new ArrayList<String>();
 	}
 
 	public ArrayList<String> getCodeRecords() {
