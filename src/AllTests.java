@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
    TestClue.class,
    MastermindTest.class,
    TestCode.class,
+   SecretCodeTest.class,
 })
 
 public class AllTests {  

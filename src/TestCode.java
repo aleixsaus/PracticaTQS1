@@ -20,6 +20,7 @@ public class TestCode {
 		//Code we should get
 		String expectedCode = "ABCD";
 		
+		//Save what we get from the method
 		String returnedCode = code.createCode();
 		
 		//Check code

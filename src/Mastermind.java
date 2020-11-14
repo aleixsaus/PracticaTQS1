@@ -5,6 +5,7 @@ public class Mastermind {
 	static final int LENGTH_CODE = 4;
 	
 	static final HashMap<Character, String> COLORS = new HashMap<Character, String>();
+	
 	static {
 		COLORS.put('R', "Red");
 		COLORS.put('B', "Blue");

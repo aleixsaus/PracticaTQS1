@@ -29,14 +29,40 @@ public class TestClue {
 	
 	@Test
 	public void testCreateClue() {
-		//Clue we should get
-		String expectedClue = "xo--";
+		Code code = new Code("ABCD");
+		SecretCode secretCode = new SecretCode("BBBB");
+				
+		String expectedClue = "-x--";
+		clue = clue.createClue(code, secretCode);
 		
-		//Save what we get from the method
-		String returnedClue = clue.createClue();
+		assertEquals(clue.getClue(), expectedClue);
 		
-		//Check clue
-		assertEquals(expectedClue, returnedClue);
+		
+		code = new Code("ABCD");
+		secretCode = new SecretCode("ABCD");
+				
+		expectedClue = "xxxx";
+		clue = clue.createClue(code, secretCode);
+		
+		assertEquals(clue.getClue(), expectedClue);
+		
+		
+		code = new Code("ABCD");
+		secretCode = new SecretCode("DCBA");
+				
+		expectedClue = "oooo";
+		clue = clue.createClue(code, secretCode);
+		
+		assertEquals(clue.getClue(), expectedClue);
+		
+		
+		code = new Code("ABCD");
+		secretCode = new SecretCode("QQQQ");
+				
+		expectedClue = "----";
+		clue = clue.createClue(code, secretCode);
+		
+		assertEquals(clue.getClue(), expectedClue);
 	}
 	
 }
