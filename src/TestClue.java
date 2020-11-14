@@ -8,17 +8,18 @@ public class TestClue {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		clue = new Clue();
+
 	}
 	
 	@Test
-	void test() {
-		//"Clue we should get"
+	void testCreateClue() {
+		//Clue we expect from calling this method
 		String expectedClue = "xo--";
 		
-		String returnedClue = clue.createClue();
-		//"Check clue"
-		assertEquals(expectedClue, returnedClue);
+		//Save what we get from the method
+		Clue returnedClue = new Clue(expectedClue);
+		//Check clue
+		assertEquals(expectedClue, returnedClue.getClue());
 	}
 
 }
