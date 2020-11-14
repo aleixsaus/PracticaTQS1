@@ -1,35 +1,57 @@
-public class SecretCode {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
-	private String secretcode;
+public abstract class SecretCode implements InterfaceSecretCode{
+
+	private final String secretcode;
 	
 	public SecretCode() {
-		secretcode = getAlphaNumericString(4);
+		secretcode = createRandomCode();
 	}
 	
-	static String getAlphaNumericString(int n) 
-    { 
-        // chose a Character random from this String 
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                                    + "0123456789"
-                                    + "abcdefghijklmnopqrstuvxyz"; 
-  
-        // create StringBuffer size of AlphaNumericString 
-        StringBuilder sb = new StringBuilder(n); 
-  
-        for (int i = 0; i < n; i++) { 
-  
-            // generate a random number between 
-            // 0 to AlphaNumericString variable length 
-            int index = (int)(AlphaNumericString.length()*Math.random()); 
-  
-            // add Character one by one in end of sb 
-            sb.append(AlphaNumericString.charAt(index)); 
-        }
+	public String createRandomCode() { 
         
-        return sb.toString(); 
+		String randomCode = "";
+        Random random = new Random();
+        List<Character> keys = new ArrayList<Character>(Mastermind.COLORS.keySet());
+		
+        for (int i = 0; i < Mastermind.LENGTH_CODE; i++) { 
+        	randomCode += keys.get(random.nextInt(keys.size()));
+         } 
+        return randomCode; 
     }
 	
-	public String getSecretCode() {
-		return secretcode;
+	public boolean checkCode(String code) {
+		System.out.println("Secret Code: "+this.secretcode);
+		if(this.secretcode.equals(code)) {
+			System.out.println("The Secret Code was: "+this.secretcode);
+		}
+		return this.secretcode.equals(code);
+	}
+	
+	public Clue createClue(Code code) {
+
+		String exitClue = "";
+
+		for (int i = 0; i < Mastermind.LENGTH_CODE; i++) {
+			if (code.getCode().split("")[i].equals(this.secretcode.split("")[i])) {
+				exitClue += "x";
+			} else {
+				boolean isThere = false;
+				for (int j = 0; j < Mastermind.LENGTH_CODE; j++) {
+					if (code.getCode().split("")[i].equals(this.secretcode.split("")[j])) {
+						exitClue += "o";
+						isThere = true;
+						break;
+					}
+				}
+				if (!isThere) {
+					exitClue += "-";
+				}
+			}
+		}
+		return new Clue(orderClue(exitClue));
 	}
 }
