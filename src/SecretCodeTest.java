@@ -11,6 +11,19 @@ public class SecretCodeTest {
 	public void setUp() throws Exception {
 		secretCode = new SecretCode("");
 	}
+	
+	//We comment it because random generation of secret code.
+	//@Test
+	//public void testGetSecretCode() {
+	//	//Code we expect from calling this method
+	//	String expectedSecredCode = "ABCD";
+	//	
+	//	//Save what we get from the method
+	//	SecretCode returnedSecredCode = new SecretCode(expectedSecredCode);
+	//	
+	//	//Check clue
+	//	assertEquals(expectedSecredCode, returnedSecredCode.getSecretCode());
+	//}
 		
 	@Test
 	public void checkSecretCodeTest() {

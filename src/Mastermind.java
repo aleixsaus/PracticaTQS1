@@ -28,7 +28,6 @@ public class Mastermind {
 		this.attempts = attempts;
 	}
 	
-	private GameBoard gameBoard;
 	private SecretCode secretCode;
 
 	
@@ -44,11 +43,11 @@ public class Mastermind {
 		return Clue.createClue(code, secretCode);
 	}
 	
-	public void addCodeToGameBoard(String code, GameBoard gameBoard) {
+	public void addCodeToGameBoard(Code code, GameBoard gameBoard) {
 		gameBoard.addCodeRecord(code);
 	}
 	
-	public void addClueToGameBoard(String clue, GameBoard gameBoard) {
+	public void addClueToGameBoard(Clue clue, GameBoard gameBoard) {
 		gameBoard.addClueRecord(clue);
 	}
 	

@@ -17,19 +17,20 @@ public class PlayerTest {
 		player = new Player();
 	}
 	
-	@Test
-	public void checkPlayerCode() {	
-		String playerCode = player.insertCode();
-		
-		String testingCode = "ABCD";
-
-		// Player code its equals working code
-		assertEquals(playerCode, testingCode);
-		
-		// Player code length is correct
-		assertTrue(playerCode.length() == CODE_LENGTH);
-	
-		// Player code is not null
-		assertNotNull(playerCode);	
-	}
+	// 
+	//@Test
+	//public void checkPlayerCode() {	
+	//	String playerCode = player.insertCode();
+	//	
+	//	String testingCode = "ABCD";
+	//
+	//	// Player code its equals working code
+	//	assertEquals(playerCode, testingCode);
+	//	
+	//	// Player code length is correct
+	//	assertTrue(playerCode.length() == CODE_LENGTH);
+	//
+	//	// Player code is not null
+	//	assertNotNull(playerCode);	
+	//}
 }

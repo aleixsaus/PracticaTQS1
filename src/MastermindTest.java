@@ -21,20 +21,20 @@ public class MastermindTest {
 	
 	@Test
 	public void addCodeGameBoardTest() {
-		String code1 = "ABCD";
-		String code2 = "DCBA";
-		String code3 = "AAAA";
+		Code code1 = new Code("ABCD");
+		Code code2 = new Code("DCBA");
+		Code code3 = new Code("AAAA");
 
 		//We add the code to the gameBoard.
 		mastermind.addCodeToGameBoard(code1, gameBoard);
 		
 		//We get the list of codes.
-		ArrayList<String> codeRecords = gameBoard.getCodeRecords();
+		ArrayList<Code> codeRecords = gameBoard.getCodeRecords();
 		
 		//We check that its added.
 		assertEquals(code1, codeRecords.get(0));
 		
-		codeRecords = new ArrayList<String>();
+		codeRecords = new ArrayList<Code>();
 		
 		codeRecords.add(code1);
 		codeRecords.add(code2);
@@ -50,20 +50,20 @@ public class MastermindTest {
 	
 	@Test
 	public void addClueGameBoardTest() {
-		String clue1 = "xo--";
-		String clue2 = "xxxx";
-		String clue3 = "xoox";
+		Clue clue1 = new Clue("xo--");
+		Clue clue2 = new Clue("xxxx");
+		Clue clue3 = new Clue("xoox");
 
 		//We add the clue to the gameBoard.
 		mastermind.addClueToGameBoard(clue1, gameBoard);
 		
 		//We get the list of clues.
-		ArrayList<String> clueRecords = gameBoard.getClueRecords();
+		ArrayList<Clue> clueRecords = gameBoard.getClueRecords();
 		
 		//We check that its added.
 		assertEquals(clue1, clueRecords.get(0));
 
-		clueRecords = new ArrayList<String>();
+		clueRecords = new ArrayList<Clue>();
 
 		clueRecords.add(clue1);
 		clueRecords.add(clue2);

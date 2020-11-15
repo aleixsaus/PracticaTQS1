@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Clue {
 
 	private String clue;
@@ -36,6 +38,25 @@ public class Clue {
 				}
 			}
 		}
+		
+		clue = sortClue(clue);
+		
 		return new Clue(clue);
+	}
+	
+	public static String sortClue(String unsortedClue) {
+		char clueChars[] = unsortedClue.toCharArray();
+		
+		Arrays.sort(clueChars);
+		String sortedClue = "";
+		
+		if(clueChars.length < Mastermind.LENGTH_CODE || clueChars.length > Mastermind.LENGTH_CODE) {		
+			return null;
+		} else {
+			for (int i = 1; i < clueChars.length + 1; i++) {
+				sortedClue += clueChars[clueChars.length - i];
+			}
+			return sortedClue;
+		}
 	}
 }
