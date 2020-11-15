@@ -3,6 +3,7 @@ import java.util.HashMap;
 public class Mastermind {
 
 	static final int LENGTH_CODE = 4;
+	static final int MAX_ATTEMPTS = 12;
 	
 	static final HashMap<Character, String> COLORS = new HashMap<Character, String>();
 	
@@ -17,16 +18,30 @@ public class Mastermind {
 		COLORS.put('P', "Pink");
 	}
 	
+	private int attempts;
+	
+	public int getAttempts() {
+		return this.attempts;
+	}
+	
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
+	}
+	
+	private GameBoard gameBoard;
+	private SecretCode secretCode;
+
+	
 	public Mastermind() {
-		
+		secretCode = new SecretCode();
 	}
 	
-	public boolean checkCode(String secretCode, String playerCode) {
-		return secretCode.equals(playerCode);
+	public boolean checkCode(String code) {
+		return secretCode.checkSecretCode(code);
 	}
 	
-	public String generateCode() {
-		return "ABCD";
+	public Clue createClue(Code code) {
+		return Clue.createClue(code, secretCode);
 	}
 	
 	public void addCodeToGameBoard(String code, GameBoard gameBoard) {
@@ -35,5 +50,13 @@ public class Mastermind {
 	
 	public void addClueToGameBoard(String clue, GameBoard gameBoard) {
 		gameBoard.addClueRecord(clue);
+	}
+	
+	public void increaseAttempts() {
+		this.attempts++;
+	}
+	
+	public boolean hasAttempts() {
+		return (this.attempts < MAX_ATTEMPTS);
 	}
 }

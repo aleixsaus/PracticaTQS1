@@ -14,16 +14,9 @@ public class MastermindTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		//We initialize each time to work with the same instance when testing		
 		mastermind = new Mastermind();
 		gameBoard = new GameBoard();
-	}
-
-	@Test
-	public void generateCodeTest() {
-		String code1 = "ABCD";
-		String code2 = this.mastermind.generateCode();
-		
-		assertEquals(code1, code2);
 	}
 	
 	@Test
@@ -32,9 +25,13 @@ public class MastermindTest {
 		String code2 = "DCBA";
 		String code3 = "AAAA";
 
+		//We add the code to the gameBoard.
 		mastermind.addCodeToGameBoard(code1, gameBoard);
 		
+		//We get the list of codes.
 		ArrayList<String> codeRecords = gameBoard.getCodeRecords();
+		
+		//We check that its added.
 		assertEquals(code1, codeRecords.get(0));
 		
 		codeRecords = new ArrayList<String>();
@@ -43,9 +40,11 @@ public class MastermindTest {
 		codeRecords.add(code2);
 		codeRecords.add(code3);
 
+		//We add the codes to the gameBoard.
 		mastermind.addCodeToGameBoard(code2, gameBoard);
 		mastermind.addCodeToGameBoard(code3, gameBoard);
 
+		//We check that the list of codes is the expected.
 		assertEquals(codeRecords, gameBoard.getCodeRecords());
 	}
 	
@@ -55,9 +54,13 @@ public class MastermindTest {
 		String clue2 = "xxxx";
 		String clue3 = "xoox";
 
+		//We add the clue to the gameBoard.
 		mastermind.addClueToGameBoard(clue1, gameBoard);
 		
+		//We get the list of clues.
 		ArrayList<String> clueRecords = gameBoard.getClueRecords();
+		
+		//We check that its added.
 		assertEquals(clue1, clueRecords.get(0));
 
 		clueRecords = new ArrayList<String>();
@@ -66,23 +69,52 @@ public class MastermindTest {
 		clueRecords.add(clue2);
 		clueRecords.add(clue3);
 
+		//We add the clues to the gameBoard.
 		mastermind.addClueToGameBoard(clue2, gameBoard);
 		mastermind.addClueToGameBoard(clue3, gameBoard);
 
+		//We check that the list of clues is the expected.
 		assertEquals(clueRecords, gameBoard.getClueRecords());		
 	}
 	
 	@Test
-	public void checkCodeTest() {
+	public void increaseAttemptsTest() {
+		//Quantity of attempts that we expect.
+		int expectedAttempts = 1;
 		
-		String code1 = "ABCD";
-		String code2 = "DCBA";
-		String code3 = "ABCD";
+		//We call the function that increase attempts.
+		mastermind.increaseAttempts();
 		
-		boolean checkCode1 = mastermind.checkCode(code1, code2);
-		assertFalse(checkCode1);
+		//We get the attempts after increase
+		int realAttempts = mastermind.getAttempts();
 		
-		boolean comprovarCodi2 = mastermind.checkCode(code1, code3);
-		assertTrue(comprovarCodi2);	
+		//We check that expectedAttemps are equals realAttempts
+		assertEquals(expectedAttempts, realAttempts);
+	}
+
+	@Test
+	public void teIntentsTest() {
+		//White box testing - Decision coverage
+
+		// We expect that it has attempts
+		boolean expectedHasAttempts = true;
+		
+		//We get if it has attempts
+		boolean hasAttemps = mastermind.hasAttempts();
+		
+		//We check if it has attempts, we expect a true because we don't set any attempt.
+		assertEquals(expectedHasAttempts, hasAttemps);
+
+		// We expect that it has not attempts
+		expectedHasAttempts = false;
+		
+		//We set attempts to MAX
+		mastermind.setAttempts(Mastermind.MAX_ATTEMPTS);
+		
+		//We get if it has attempts
+		hasAttemps = mastermind.hasAttempts();
+		
+		//We check if it has attempts, we expect a false because we set all attempts.
+		assertEquals(expectedHasAttempts, hasAttemps);
 	}
 }

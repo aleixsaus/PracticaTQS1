@@ -32,9 +32,10 @@ public class SecretCode {
     }
 	
 	public boolean checkSecretCode(String code) {
-		//System.out.println("Secret Code: "+this.secretcode);
+		System.out.println("Secret Code: " + this.secretcode);
+		
 		if(this.secretcode.equals(code)) {
-			//System.out.println("The Secret Code was: " + this.secretcode); 
+			System.out.println("The Secret Code was: " + this.secretcode); 
 		}
 		return this.secretcode.equals(code);
 	}

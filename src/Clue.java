@@ -16,7 +16,7 @@ public class Clue {
 		return clue;
 	}
 	
-	public Clue createClue(Code code, SecretCode secretCode) {
+	public static Clue createClue(Code code, SecretCode secretCode) {
 
 		String clue = "";
 
