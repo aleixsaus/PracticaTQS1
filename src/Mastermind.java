@@ -62,4 +62,8 @@ public class Mastermind {
 	public boolean hasAttempts() {
 		return (this.attempts < MAX_ATTEMPTS);
 	}
+	
+	public void printInstructions() {
+		System.out.println("INSTRUCTIONS");
+	}
 }
