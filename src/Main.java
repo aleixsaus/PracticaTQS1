@@ -1,4 +1,4 @@
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 		
@@ -8,9 +8,10 @@ public class main {
 		mastermind.printInstructions();
 		
         while (!mastermind.hasFinished()) {
-            String response = player.insertCode();
+            String response = player.enterCode();
+            
             while(response == null) {
-            	response = player.insertCode();
+            	response = player.enterCode();
             }
             mastermind.enterCode(response);
         }

@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestClue {
+public class ClueTest {
 	
 	private Clue clue;
 

@@ -19,8 +19,9 @@ public class Mastermind {
 	}
 	
 	private int attempts;
+	
 	//NEEDED FOR THE MOCKOBJECTS
-	private GameBoard gameboard;
+	private GameBoard gameBoard;
 	private boolean hasFinished;
 	
 	public int getAttempts() {
@@ -36,19 +37,20 @@ public class Mastermind {
 	
 	public Mastermind() {
 		secretCode = new SecretCode();
+		gameBoard = new GameBoard();
 	}
 	
-	//MOCKOBJECT OF CODE
+	//USES MOCKOBJECT OF CODE
 	public boolean checkCode(String code) {
 		return secretCode.checkSecretCode(code);
 	}
 	
-	//MOCKOBJECT OF CODE
+	//USES MOCKOBJECT OF CODE
 	public Clue createClue(Code code) {
 		return Clue.createClue(code, secretCode);
 	}
 	
-	//MOCKOBJECT OF CLUE
+	//USES MOCKOBJECT OF CODE
 	public String sortClue(String unsortedClue) {
 		return Clue.sortClue(unsortedClue);
 	}
@@ -78,20 +80,26 @@ public class Mastermind {
 	}
 	
 	//Initialize the game and start it
-	//MOCKOBJECT OF CODE AND GAMEBOARD
+	//USES MOCKOBJECT OF CODE AND GAMEBOARD
 	public void enterCode(String code) {
-        if (!checkCode(code)) {
-            System.out.println("You have failed!");
-            addCodeToGameBoard(new Code(code), gameboard);
-            addClueToGameBoard(Clue.createClue(new Code(code), new SecretCode()), gameboard);
-            gameboard.designGameBoard();
-            System.out.println(gameboard.getGameBoardDesign());
+		this.attempts++;
+        if (hasAttempts()) {              
+	        if (!checkCode(code)) {
+	            System.out.println("You have failed!");
+	            addCodeToGameBoard(new Code(code), gameBoard);
+	            addClueToGameBoard(Clue.createClue(new Code(code), secretCode), gameBoard);
+	            gameBoard.designGameBoard();
+	            System.out.println(gameBoard.getGameBoardDesign());
+	   
+	        } else {
+	        	addCodeToGameBoard(new Code(code), gameBoard);
+	        	addClueToGameBoard(Clue.createClue(new Code(code), secretCode), gameBoard);
+	            gameBoard.designGameBoard();
+	            hasFinished = true;
+	            System.out.println("You have won!");
+	        }
         } else {
-        	addCodeToGameBoard(new Code(code), gameboard);
-        	addClueToGameBoard(Clue.createClue(new Code(code), new SecretCode()), gameboard);
-            gameboard.designGameBoard();
-            System.out.println(gameboard.getGameBoardDesign());
-            System.out.println("You have won!");
+        	System.out.println("You have lost!");
         }
     }
 	

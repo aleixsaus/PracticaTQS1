@@ -14,11 +14,11 @@ public class SecretCode {
 		secretcode = createRandomCode();
 	}
 	
-	//GETTER
 	public String getSecretCode() { 
 		return secretcode;
 	}
 	
+	//Creates a random secret code.
 	public String createRandomCode() { 
         
 		String randomCode = "";
@@ -32,9 +32,8 @@ public class SecretCode {
         return randomCode; 
     }
 	
-	public boolean checkSecretCode(String code) {
-		System.out.println("Secret Code: " + this.secretcode);
-		
+	//Checks if the entered code and the secret code are equals.
+	public boolean checkSecretCode(String code) {	
 		if(this.secretcode.equals(code)) {
 			System.out.println("The Secret Code was: " + this.secretcode); 
 		}

@@ -4,10 +4,10 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-   //PlayerTest.class, 
-   TestClue.class,
+   PlayerTest.class, 
+   ClueTest.class,
    MastermindTest.class,
-   TestCode.class,
+   CodeTest.class,
    SecretCodeTest.class,
 })
 

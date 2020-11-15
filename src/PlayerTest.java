@@ -33,4 +33,45 @@ public class PlayerTest {
 	//	// Player code is not null
 	//	assertNotNull(playerCode);	
 	//}
+	
+	@Test
+	public void checkEnteredCode() {
+		
+		//Correct code entered to test.
+		String enteredCode = "PRBV";	
+		//Save what we get from the method.
+		boolean passCheck = player.checkEnteredCode(enteredCode);	
+		//We check that the entered code is correct.
+		assertTrue(passCheck);
+		
+		//Wrong code entered to test.
+		enteredCode = "1234";
+		//Save what we get from the method.
+		passCheck = player.checkEnteredCode(enteredCode);
+		//We check that the entered code is wrong.
+		assertFalse(passCheck);
+		
+		//Null code entered to test.
+		enteredCode = null;
+		//Save what we get from the method.
+		passCheck = player.checkEnteredCode(enteredCode);
+		//We check that the entered code is wrong.
+		assertFalse(passCheck);
+		
+		//Wrong code with wrong length entered to test.
+		//Inner limit test 
+		enteredCode = "123";
+		//Save what we get from the method.
+		passCheck = player.checkEnteredCode(enteredCode);
+		//We check that the entered code is wrong.
+		assertFalse(passCheck);
+		
+		//Wrong code with wrong length entered to test.
+		//Outer limit test
+		enteredCode = "12345";
+		//Save what we get from the method.
+		passCheck = player.checkEnteredCode(enteredCode);
+		//We check that the entered code is wrong.
+		assertFalse(passCheck);
+	}
 }
