@@ -43,6 +43,10 @@ public class Mastermind {
 		return Clue.createClue(code, secretCode);
 	}
 	
+	public String sortClue(String unsortedClue) {
+		return Clue.sortClue(unsortedClue);
+	}
+	
 	public void addCodeToGameBoard(Code code, GameBoard gameBoard) {
 		gameBoard.addCodeRecord(code);
 	}
