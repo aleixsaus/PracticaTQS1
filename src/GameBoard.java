@@ -12,30 +12,37 @@ public class GameBoard {
 		clueRecords = new ArrayList<Clue>();
 	}
 
+	//GETTER
 	public ArrayList<Code> getCodeRecords() {
 		return this.codeRecords;
 	}
 	
+	//SETTER
 	public void addCodeRecord(Code code) {
 		this.codeRecords.add(code);
 	}
 	
+	//GETTER
 	public ArrayList<Clue> getClueRecords() {
 		return this.clueRecords;
 	}
 	
+	//SETTER
 	public void addClueRecord(Clue clue) {
 		this.clueRecords.add(clue);
 	}
 	
+	//GETTER
 	public String getGameBoardDesign() {
 		return gameBoardDesign;
 	}
 
+	//SETTER
 	public void setGameBoardDesign(String gameBoardDesign) {
 		this.gameBoardDesign = gameBoardDesign;
 	}
 	
+	//Create the board and add the codes and clues to the document if needed
 	public void designGameBoard() {
 		String gameBoardDesign = "";
 		

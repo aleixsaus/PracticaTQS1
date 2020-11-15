@@ -14,6 +14,7 @@ public class SecretCode {
 		secretcode = createRandomCode();
 	}
 	
+	//GETTER
 	public String getSecretCode() { 
 		return secretcode;
 	}

@@ -14,10 +14,12 @@ public class Clue {
 		this.clue = clue;
 	}
 	
+	//GETTER
 	public String getClue() {
 		return clue;
 	}
 	
+	//We will need to test it later with a mock object so it keeps being private
 	public static Clue createClue(Code code, SecretCode secretCode) {
 
 		String clue = "";
