@@ -19,4 +19,8 @@ public class Code {
 	public String createCode() {
 		return "ABCD";
 	}
+	
+	public void setCode(String code) {
+		this.code = code;
+	}
 }

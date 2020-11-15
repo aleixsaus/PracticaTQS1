@@ -33,36 +33,31 @@ public class TestClue {
 		SecretCode secretCode = new SecretCode("BBBB");
 				
 		String expectedClue = "-x--";
-		clue = clue.createClue(code, secretCode);
+		clue = Clue.createClue(code, secretCode);
 		
 		assertEquals(clue.getClue(), expectedClue);
 		
-		
-		code = new Code("ABCD");
 		secretCode = new SecretCode("ABCD");
 				
 		expectedClue = "xxxx";
-		clue = clue.createClue(code, secretCode);
+		clue = Clue.createClue(code, secretCode);
 		
 		assertEquals(clue.getClue(), expectedClue);
 		
 		
-		code = new Code("ABCD");
 		secretCode = new SecretCode("DCBA");
 				
 		expectedClue = "oooo";
-		clue = clue.createClue(code, secretCode);
+		clue = Clue.createClue(code, secretCode);
 		
 		assertEquals(clue.getClue(), expectedClue);
 		
 		
-		code = new Code("ABCD");
 		secretCode = new SecretCode("QQQQ");
 				
 		expectedClue = "----";
-		clue = clue.createClue(code, secretCode);
+		clue = Clue.createClue(code, secretCode);
 		
 		assertEquals(clue.getClue(), expectedClue);
 	}
-	
 }
