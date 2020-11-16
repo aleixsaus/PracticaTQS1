@@ -95,7 +95,7 @@ public class MastermindTest {
 	}
 
 	@Test
-	public void hasAttempsTest() {
+	public void hasAttemptsTest() {
 		//White box testing - Decision coverage
 
 		// We expect that it has attempts
