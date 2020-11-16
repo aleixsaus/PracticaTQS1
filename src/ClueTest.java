@@ -10,11 +10,6 @@ import org.junit.Test;
 public class ClueTest {
 	
 	private Clue clue;
-
-	@Before
-	public void setUp() throws Exception {
-		clue = new Clue();
-	}
 	
 	@Test
 	public void testGetClue() {
@@ -132,7 +127,7 @@ public class ClueTest {
 		//We check that the expected result matches.
 		assertEquals(sortedClue, resultClue);
 	
-		//Condition coverage - Limit values.
+		//Condition coverage - Limit values. 
 		
 		//Clue longer than max length.
 		unsortedClue = "-xo--";

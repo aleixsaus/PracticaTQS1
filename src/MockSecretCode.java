@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MockSecretCode {
+public class MockSecretCode implements InterfaceSecretCode {
 
 	private String secretCode;
 
