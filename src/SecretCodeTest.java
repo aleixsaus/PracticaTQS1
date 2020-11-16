@@ -6,10 +6,12 @@ import org.junit.Test;
 
 public class SecretCodeTest {
 	private SecretCode secretCode;
+	private MockSecretCode mockSecretCode;
 
 	@Before
 	public void setUp() throws Exception {
-		secretCode = new SecretCode("");
+		secretCode = new SecretCode();
+		mockSecretCode = new MockSecretCode();
 	}
 	
 	//We comment it because random generation of secret code.
@@ -25,6 +27,7 @@ public class SecretCodeTest {
 	//	assertEquals(expectedSecredCode, returnedSecredCode.getSecretCode());
 	//}
 		
+	//MOCKOBJECT
 	@Test
 	public void checkSecretCodeTest() {
 		//We test if a secret code its equal a player code.
@@ -32,18 +35,18 @@ public class SecretCodeTest {
 		String code = "ABCD";
 		String secretCode = "ABCD";
 		
-		this.secretCode = new SecretCode(secretCode);
+		this.mockSecretCode.setSecretCode(secretCode);
 		
 		//We check that the code and the secret code are equals.
-		boolean checkCode = this.secretCode.checkSecretCode(code);
+		boolean checkCode = this.mockSecretCode.checkSecretCode(code);
 		assertTrue(checkCode);
 		
 		secretCode = "DCBA";
 		
-		this.secretCode = new SecretCode(secretCode);
+		this.mockSecretCode.setSecretCode(secretCode);
 		
 		//We check that the code and the secret code are not equals.
-		checkCode = this.secretCode.checkSecretCode(code);
+		checkCode = this.mockSecretCode.checkSecretCode(code);
 		assertFalse(checkCode);	
 	}
 }

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class MastermindTest {
 	private Mastermind mastermind;
+	private MockSecretCode mockSecretCode;
 	private GameBoard gameBoard;
 
 	
@@ -16,6 +17,7 @@ public class MastermindTest {
 	public void setUp() throws Exception {
 		//We initialize each time to work with the same instance when testing		
 		mastermind = new Mastermind();
+		mockSecretCode = new MockSecretCode();
 		gameBoard = new GameBoard();
 	}
 	
@@ -93,7 +95,7 @@ public class MastermindTest {
 	}
 
 	@Test
-	public void teIntentsTest() {
+	public void hasAttempsTest() {
 		//White box testing - Decision coverage
 
 		// We expect that it has attempts
@@ -116,5 +118,33 @@ public class MastermindTest {
 		
 		//We check if it has attempts, we expect a false because we set all attempts.
 		assertEquals(expectedHasAttempts, hasAttemps);
+	}
+	
+	//MOCKOBJECT - MOCKCODISECRET
+	@Test
+	void enterCodeTest() {
+		//DECISION COVERAGE + MOCK OBJECT
+
+		//	FEM QUE ENTRI DINS EL IF
+		//Insert the mock so we can test the functions
+		String secret = "BTBT";
+		mockSecretCode.setSecretCode(secret);
+		mastermind.setSecretCode(mockSecretCode);
+		//Code we'll test
+		String code = "BTBT";
+		mastermind.enterCode(code);
+		//Check the result which should be true in this case because it's the same code than the secret
+		assertTrue(mastermind.hasFinished());
+
+		//		FEM QUE PASSI PER L'ELSE
+		//Insert the mock so we can test the functions
+		secret = "VVVV";
+		mockSecretCode.setSecretCode(secret);
+		mastermind.setSecretCode(mockSecretCode);
+		//Code we'll test
+		code = "TTTT";
+		mastermind.enterCode(code);
+		//Check the result which should be false in this case because it is not the same code than the secret
+		assertFalse(mastermind.hasFinished());
 	}
 }

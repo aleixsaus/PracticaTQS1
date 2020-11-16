@@ -21,6 +21,7 @@ public class Mastermind {
 	private int attempts;
 	
 	//NEEDED FOR THE MOCKOBJECTS
+	private InterfaceSecretCode isecretCode;
 	private GameBoard gameBoard;
 	private boolean hasFinished;
 	
@@ -33,10 +34,9 @@ public class Mastermind {
 	}
 	
 	private SecretCode secretCode;
-
 	
 	public Mastermind() {
-		secretCode = new SecretCode();
+		isecretCode = new SecretCode();
 		gameBoard = new GameBoard();
 	}
 	
@@ -102,6 +102,12 @@ public class Mastermind {
         	System.out.println("You have lost!");
         }
     }
+	
+	//FUNCTION TO TEST THE MOCK OBJECTS WITH OUR MOCK
+	public void setSecretCode(MockSecretCode mockSecretCode) {
+		this.isecretCode = mockSecretCode;
+
+	}
 	
     public boolean hasFinished() {
     	return hasFinished;

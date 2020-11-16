@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SecretCode {
+public class SecretCode implements InterfaceSecretCode {
 
 	private final String secretcode;
 	
