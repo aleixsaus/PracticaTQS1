@@ -14,17 +14,17 @@ public class Clue {
 	}
 	
 	//We will need to test it later with a mock object so it keeps being private
-	public static Clue createClue(Code code, SecretCode secretCode) {
+	public static Clue createClue(Code code, String secretCode) {
 
 		String clue = "";
 
 		for (int i = 0; i < Mastermind.LENGTH_CODE; i++) {
-			if (code.getCode().split("")[i].equals(secretCode.getSecretCode().split("")[i])) {
+			if (code.getCode().split("")[i].equals(secretCode.split("")[i])) {
 				clue += "x";
 			} else {
 				boolean isThere = false;
 				for (int j = 0; j < Mastermind.LENGTH_CODE; j++) {
-					if (isThere = code.getCode().split("")[i].equals(secretCode.getSecretCode().split("")[j])) {
+					if (isThere = code.getCode().split("")[i].equals(secretCode.split("")[j])) {
 						clue += "o";
 						break;
 					}

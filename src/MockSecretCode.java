@@ -18,7 +18,7 @@ public class MockSecretCode implements InterfaceSecretCode {
 		this.secretCode = code;
 	}
 	
-	public String getCodiSecret() {
+	public String getSecretCode() {
 		return this.secretCode;
 	}
 	

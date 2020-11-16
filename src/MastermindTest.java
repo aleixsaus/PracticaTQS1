@@ -10,6 +10,7 @@ import org.junit.Test;
 public class MastermindTest {
 	private Mastermind mastermind;
 	private MockSecretCode mockSecretCode;
+	private MockPlayer mockPlayer;
 	private GameBoard gameBoard;
 
 	
@@ -18,6 +19,7 @@ public class MastermindTest {
 		//We initialize each time to work with the same instance when testing		
 		mastermind = new Mastermind();
 		mockSecretCode = new MockSecretCode();
+		mockPlayer = new MockPlayer();
 		gameBoard = new GameBoard();
 	}
 	
@@ -122,27 +124,27 @@ public class MastermindTest {
 	
 	//MOCKOBJECT - MOCKCODISECRET
 	@Test
-	void enterCodeTest() {
+	public void enterCodeTest() {
 		//DECISION COVERAGE + MOCK OBJECT
 
-		//	FEM QUE ENTRI DINS EL IF
+		//If
 		//Insert the mock so we can test the functions
-		String secret = "BTBT";
+		String secret = "BRBR";
 		mockSecretCode.setSecretCode(secret);
 		mastermind.setSecretCode(mockSecretCode);
 		//Code we'll test
-		String code = "BTBT";
+		String code = "BRBR";
 		mastermind.enterCode(code);
 		//Check the result which should be true in this case because it's the same code than the secret
 		assertTrue(mastermind.hasFinished());
 
-		//		FEM QUE PASSI PER L'ELSE
+		//Else
 		//Insert the mock so we can test the functions
 		secret = "VVVV";
 		mockSecretCode.setSecretCode(secret);
 		mastermind.setSecretCode(mockSecretCode);
 		//Code we'll test
-		code = "TTTT";
+		code = "RRRR";
 		mastermind.enterCode(code);
 		//Check the result which should be false in this case because it is not the same code than the secret
 		assertFalse(mastermind.hasFinished());

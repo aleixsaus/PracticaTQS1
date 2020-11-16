@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Mastermind {
@@ -21,9 +22,12 @@ public class Mastermind {
 	private int attempts;
 	
 	//NEEDED FOR THE MOCKOBJECTS
-	private InterfaceSecretCode isecretCode;
+	private InterfaceSecretCode iSecretCode;
+	private InterfacePlayer iPlayer;
 	private GameBoard gameBoard;
 	private boolean hasFinished;
+	private ArrayList<String> attemptsRecord;
+
 	
 	public int getAttempts() {
 		return this.attempts;
@@ -32,36 +36,34 @@ public class Mastermind {
 	public void setAttempts(int attempts) {
 		this.attempts = attempts;
 	}
-	
-	private SecretCode secretCode;
-	
+		
 	public Mastermind() {
-		isecretCode = new SecretCode();
+		iSecretCode = new SecretCode();
 		gameBoard = new GameBoard();
+		iPlayer = new Player();
+		
+		attemptsRecord = new ArrayList<String>();
 	}
 	
-	//USES MOCKOBJECT OF CODE
+	//USES MOCKOBJECT OF SECRET CODE
 	public boolean checkCode(String code) {
-		return secretCode.checkSecretCode(code);
+		return iSecretCode.checkSecretCode(code);
 	}
 	
-	//USES MOCKOBJECT OF CODE
+	//USES MOCKOBJECT OF SECRET CODE
 	public Clue createClue(Code code) {
-		return Clue.createClue(code, secretCode);
+		return Clue.createClue(code, iSecretCode.getSecretCode());
 	}
 	
-	//USES MOCKOBJECT OF CODE
 	public String sortClue(String unsortedClue) {
 		return Clue.sortClue(unsortedClue);
 	}
 	
-	//MOCKOBJECT OF GAMEBOARD
 	public void addCodeToGameBoard(Code code, GameBoard gameBoard) {
 		//Add a code to the record
 		gameBoard.addCodeRecord(code);
 	}
 	
-	//MOCKOBJECT OF GAMEBOARD
 	public void addClueToGameBoard(Clue clue, GameBoard gameBoard) {
 		//Add a clue to the record
 		gameBoard.addClueRecord(clue);
@@ -75,25 +77,41 @@ public class Mastermind {
 		return (this.attempts < MAX_ATTEMPTS);
 	}
 	
-	public void printInstructions() {
-		System.out.println("INSTRUCTIONS");
+	//We simulate a player playing with the MOCK OBJECT - MOCKJUGADOR
+	public void playerPlaysGame() {
+		attempts = 0;
+		while(!hasFinished) {
+			if(attempts <= MAX_ATTEMPTS) {
+				String playerCode = iPlayer.enterCode(); 
+				attemptsRecord.add(playerCode);
+				while(playerCode == null) {
+					playerCode = iPlayer.enterCode();
+				}
+				enterCode(playerCode);
+				attempts++;
+			} else {
+				hasFinished = true;
+				System.out.println("HAS PERDUT! INTENTS ESGOTATS!");
+			}
+		}
 	}
 	
 	//Initialize the game and start it
-	//USES MOCKOBJECT OF CODE AND GAMEBOARD
+	//USES MOCKOBJECT OF SECRET CODE
 	public void enterCode(String code) {
+        hasFinished = false;
 		this.attempts++;
         if (hasAttempts()) {              
 	        if (!checkCode(code)) {
 	            System.out.println("You have failed!");
 	            addCodeToGameBoard(new Code(code), gameBoard);
-	            addClueToGameBoard(Clue.createClue(new Code(code), secretCode), gameBoard);
+	            addClueToGameBoard(Clue.createClue(new Code(code), iSecretCode.getSecretCode()), gameBoard);
 	            gameBoard.designGameBoard();
 	            System.out.println(gameBoard.getGameBoardDesign());
 	   
 	        } else {
 	        	addCodeToGameBoard(new Code(code), gameBoard);
-	        	addClueToGameBoard(Clue.createClue(new Code(code), secretCode), gameBoard);
+	        	addClueToGameBoard(Clue.createClue(new Code(code), iSecretCode.getSecretCode()), gameBoard);
 	            gameBoard.designGameBoard();
 	            hasFinished = true;
 	            System.out.println("You have won!");
@@ -105,8 +123,7 @@ public class Mastermind {
 	
 	//FUNCTION TO TEST THE MOCK OBJECTS WITH OUR MOCK
 	public void setSecretCode(MockSecretCode mockSecretCode) {
-		this.isecretCode = mockSecretCode;
-
+		this.iSecretCode = mockSecretCode;
 	}
 	
     public boolean hasFinished() {

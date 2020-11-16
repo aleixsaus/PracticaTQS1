@@ -1,31 +1,31 @@
+import java.util.ArrayList;
 import java.util.Map.Entry;
-import java.util.Scanner;
 
-public class Player implements InterfacePlayer{
+public class MockPlayer implements InterfacePlayer{
 
-	private Scanner scanner = new Scanner(System.in);
+	private ArrayList<String> playerPlays = new ArrayList<String>();
+	
+	void addPlayerPlay(String play){
+		this.playerPlays.add(play);
+	}
+	
+	@Override
+	public String enterCode() {
+		System.out.println("Colors:");
+		
+		printColorsList();
+		
+		System.out.println("What is the secret code?");
+		
+		//We reed the entered code by the player (MOCKOBJECT of Player) 
+		String playerCode = playerPlays.get(playerPlays.size() - 1);
+		if(!checkEnteredCode(playerCode)) {
+			return null;
+		}
+		return playerCode;		
+	}
 
-	//User interaction, we use the mockObject to testing.
-    public String enterCode() {
-    		System.out.println("Colors:");
-    		
-    		printColorsList();
-    		
-    		System.out.println("What is the secret code?");
-    		
-			if (scanner.hasNextLine()) {
-				String response = scanner.nextLine().toUpperCase().trim();
-				
-				if(!checkEnteredCode(response)) {
-					return null;
-				} else {
-					return response;
-				}
-			} else {
-				return null;
-			}
-    }
-    
+	//Prints the list of colors (key, value).
     public void printColorsList() {
     	for (Entry<Character, String> color : Mastermind.COLORS.entrySet()) {
 		    Character colorCode = color.getKey();
@@ -67,4 +67,5 @@ public class Player implements InterfacePlayer{
 			return false;
 		}
 	}
+
 }

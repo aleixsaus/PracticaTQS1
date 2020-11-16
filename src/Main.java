@@ -4,9 +4,7 @@ public class Main {
 		
 		Mastermind mastermind = new Mastermind();
         Player player = new Player();
-		
-		mastermind.printInstructions();
-		
+				
         while (!mastermind.hasFinished()) {
             String response = player.enterCode();
             

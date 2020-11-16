@@ -33,7 +33,7 @@ public class ClueTest {
 		//We set the expected clue returned.
 		String expectedClue = "x---";	
 		//We get the result clue of the function.
-		clue = Clue.createClue(code, secretCode);	
+		clue = Clue.createClue(code, secretCode.getSecretCode());	
 		//Check clue
 		assertEquals(clue.getClue(), expectedClue);	
 		
@@ -43,7 +43,7 @@ public class ClueTest {
 		//We set the expected clue returned.
 		expectedClue = "o---";
 		//We get the result clue of the function.
-		clue = Clue.createClue(code, secretCode);		
+		clue = Clue.createClue(code, secretCode.getSecretCode());		
 		//Check clue.
 		assertEquals(clue.getClue(), expectedClue);		
 		
@@ -53,7 +53,7 @@ public class ClueTest {
 		//We set the expected clue returned.	
 		expectedClue = "xxxx";	
 		//We get the result clue of the function.
-		clue = Clue.createClue(code, secretCode);		
+		clue = Clue.createClue(code, secretCode.getSecretCode());		
 		//Check clue
 		assertEquals(clue.getClue(), expectedClue);
 		
@@ -63,7 +63,7 @@ public class ClueTest {
 		//We set the expected clue returned.			
 		expectedClue = "oooo";
 		//We get the result clue of the function.
-		clue = Clue.createClue(code, secretCode);
+		clue = Clue.createClue(code, secretCode.getSecretCode());
 		//Check clue	
 		assertEquals(clue.getClue(), expectedClue);
 		
@@ -73,7 +73,7 @@ public class ClueTest {
 		//We set the expected clue returned.					
 		expectedClue = "----";
 		//We get the result clue of the function.
-		clue = Clue.createClue(code, secretCode);	
+		clue = Clue.createClue(code, secretCode.getSecretCode());	
 		//Check clue
 		assertEquals(clue.getClue(), expectedClue);
 	}
