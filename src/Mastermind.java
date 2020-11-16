@@ -72,7 +72,10 @@ public class Mastermind {
 	}
 	
 	public boolean hasAttempts() {
-		return (this.attempts < MAX_ATTEMPTS);
+		if (this.attempts < MAX_ATTEMPTS) {
+			return true;
+		}
+		return false;
 	}
 	
 	//We simulate a player playing with the MOCK OBJECT - MOCKPLAYER
