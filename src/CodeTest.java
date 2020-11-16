@@ -10,6 +10,7 @@ public class CodeTest {
 		
 	@Test
 	public void testGetCode() {
+		//Statement Coverage - White box
 		//Code we expect from calling this method
 		String expectedCode = "ABCD";
 		

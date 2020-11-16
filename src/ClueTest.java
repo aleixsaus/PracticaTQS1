@@ -11,6 +11,7 @@ public class ClueTest {
 	
 	private Clue clue;
 	
+	//White box - Statement coverage
 	@Test
 	public void testGetClue() {
 		//Clue we expect from calling this method
@@ -25,8 +26,8 @@ public class ClueTest {
 	
 	@Test
 	public void testCreateClue() {
+		//White box - Statement coverage
 		//We create a secret code directly, we will need a mockObject.
-		
 		//We create a code and a secret code to test.
 		Code code = new Code("RBBB");	
 		SecretCode secretCode = new SecretCode("RPPP");		

@@ -98,7 +98,7 @@ public class MastermindTest {
 
 	@Test
 	public void hasAttemptsTest() {
-		//White box testing - Decision coverage
+		//Black box testing - Decision coverage
 
 		// We expect that it has attempts
 		boolean expectedHasAttempts = true;
@@ -375,7 +375,7 @@ public class MastermindTest {
 	//So we create our own function for this purpose.
 	@Test
 	public void simulationPathCoverageTest() {
-		
+		//Path Coverage - White Box
 		int expectedResponse = 0;	
 		
 		//Path 3: 1, 6, 7
