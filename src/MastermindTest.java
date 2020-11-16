@@ -152,12 +152,12 @@ public class MastermindTest {
 	
 	//MOCKOBJECT - MOCKPLAYER
 	@Test
-	public void playerSetDifficultTest() {
+	public void playerSetsDifficultTest() {
 			
 		ArrayList<String> colorsToPlayResult = new ArrayList<String>();			
 
 		//Loop testing - No loop execute
-		
+	
 		int expectedSize = 0;	
 		mockPlayer.setPlayerDifficult("0");
 		mastermind.setPlayer(mockPlayer);
