@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class Mastermind {
 
-	static int LENGTH_CODE = 4;
+	static final int LENGTH_CODE = 4;
 	static final int MAX_ATTEMPTS = 12;
 	
 	static final HashMap<Character, String> COLORS = new HashMap<Character, String>();
