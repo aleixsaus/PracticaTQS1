@@ -130,6 +130,18 @@ public class Mastermind {
 	        }
     }
 	
+	//To test Path Coverage
+	public int simulationPathCoverage(int A, int B, int C) {
+		if (A == 50) {
+			if (B > C) {
+				A = B;			
+			} else {
+				A = C;
+			}
+		}		
+		return A;
+	}
+	
 	//FUNCTION TO TEST THE MOCK OBJECTS WITH OUR MOCK
 	public void setSecretCode(MockSecretCode mockSecretCode) {
 		this.iSecretCode = mockSecretCode;

@@ -150,8 +150,8 @@ public class MastermindTest {
 		assertFalse(mastermind.hasFinished());
 	}
 	
-	@Test
 	//MOCKOBJECT - MOCKPLAYER
+	@Test
 	public void playerSetDifficultTest() {
 			
 		ArrayList<String> colorsToPlayResult = new ArrayList<String>();			
@@ -369,5 +369,45 @@ public class MastermindTest {
 		
 		//We check that he wins.
 		assertTrue(mastermind.hasWinned());		
+	}
+	
+	//We have not needed to create any function with which to do a Path Coverage test.
+	//So we create our own function for this purpose.
+	@Test
+	public void simulationPathCoverageTest() {
+		
+		int expectedResponse = 0;	
+		
+		//Path 3: 1, 6, 7
+		int A = 100;
+		int B = 20;
+		int C = 10;
+		
+		expectedResponse = A;
+		
+		int responsePathCoverage = mastermind.simulationPathCoverage(A, B, C);
+		assertEquals(expectedResponse, responsePathCoverage);
+		
+		//Path 2: 1,2,4,5,6,7
+		
+		A = 50;
+		B = 20;
+		C = 10;
+		
+		expectedResponse = B;
+				
+		responsePathCoverage = mastermind.simulationPathCoverage(A, B, C);
+		assertEquals(expectedResponse, responsePathCoverage);
+		
+		//Path 1: 1,2,3,5,6,7
+		
+		A = 50;
+		B = 10;
+		C = 20;
+		
+		expectedResponse = C;
+		
+		responsePathCoverage = mastermind.simulationPathCoverage(A, B, C);
+		assertEquals(expectedResponse, responsePathCoverage);	
 	}
 }
