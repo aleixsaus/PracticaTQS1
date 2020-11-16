@@ -4,7 +4,8 @@ import java.util.Map.Entry;
 public class MockPlayer implements InterfacePlayer{
 
 	private ArrayList<String> playerPlays = new ArrayList<String>();
-	
+	private int playsDone = 0;
+
 	void addPlayerPlay(String play){
 		this.playerPlays.add(play);
 	}
@@ -18,7 +19,9 @@ public class MockPlayer implements InterfacePlayer{
 		System.out.println("What is the secret code?");
 		
 		//We reed the entered code by the player (MOCKOBJECT of Player) 
-		String playerCode = playerPlays.get(playerPlays.size() - 1);
+		String playerCode = playerPlays.get(playsDone);
+		this.playsDone++;
+
 		if(!checkEnteredCode(playerCode)) {
 			return null;
 		}

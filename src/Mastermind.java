@@ -26,6 +26,7 @@ public class Mastermind {
 	private InterfacePlayer iPlayer;
 	private GameBoard gameBoard;
 	private boolean hasFinished;
+	private boolean hasWinned;
 	private ArrayList<String> attemptsRecord;
 
 	
@@ -81,7 +82,7 @@ public class Mastermind {
 	public void playerPlaysGame() {
 		attempts = 0;
 		while(!hasFinished) {
-			if(attempts <= MAX_ATTEMPTS) {
+			if(attempts < MAX_ATTEMPTS) {
 				String playerCode = iPlayer.enterCode(); 
 				attemptsRecord.add(playerCode);
 				while(playerCode == null) {
@@ -100,7 +101,6 @@ public class Mastermind {
 	//USES MOCKOBJECT OF SECRET CODE
 	public void enterCode(String code) {
         hasFinished = false;
-		this.attempts++;
         if (hasAttempts()) {              
 	        if (!checkCode(code)) {
 	            System.out.println("You have failed!");
@@ -114,6 +114,7 @@ public class Mastermind {
 	        	addClueToGameBoard(Clue.createClue(new Code(code), iSecretCode.getSecretCode()), gameBoard);
 	            gameBoard.designGameBoard();
 	            hasFinished = true;
+	            hasWinned = true;
 	            System.out.println("You have won!");
 	        }
         } else {
@@ -126,7 +127,16 @@ public class Mastermind {
 		this.iSecretCode = mockSecretCode;
 	}
 	
+	//FUNCTION TO TEST THE MOCK OBJECTS WITH OUR MOCK
+	public void setPlayer(MockPlayer mockPlayer) {
+		this.iPlayer = mockPlayer;
+	}
+	
     public boolean hasFinished() {
     	return hasFinished;
+    }
+    
+    public boolean hasWinned() {
+    	return hasWinned;
     }
 }

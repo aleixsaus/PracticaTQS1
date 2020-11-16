@@ -149,4 +149,103 @@ public class MastermindTest {
 		//Check the result which should be false in this case because it is not the same code than the secret
 		assertFalse(mastermind.hasFinished());
 	}
+	
+	//MOCKOBJECT - MOCKPLAYER AND MOCKSECRETCODE - TWO MOCKOBJECTS
+	@Test
+	public void elJugadorJugaTest() {
+		
+		//The player uses all his attempts and loses the game.
+		
+		//We use the SecretCode MockObject to set our secretCode.
+		mockSecretCode.setSecretCode("BRWY");
+		mastermind.setSecretCode(mockSecretCode);
+		
+		//We fill the record of plays of out player (MockPlayer).
+		mockPlayer.addPlayerPlay("OOOO");
+		mockPlayer.addPlayerPlay("SJDU");
+		mockPlayer.addPlayerPlay("VRWB");
+		mockPlayer.addPlayerPlay("BBRR");
+		mockPlayer.addPlayerPlay("123");
+		mockPlayer.addPlayerPlay("OOOO");
+		mockPlayer.addPlayerPlay("RRBB");
+		mockPlayer.addPlayerPlay("BRWO");
+		mockPlayer.addPlayerPlay("12345");
+		mockPlayer.addPlayerPlay("RWYB");
+		mockPlayer.addPlayerPlay("YYYY");
+		mockPlayer.addPlayerPlay("BBBB");
+		mockPlayer.addPlayerPlay("0201");
+		mockPlayer.addPlayerPlay("WWBB");
+		mockPlayer.addPlayerPlay("BBWW");
+		mockPlayer.addPlayerPlay("1");
+		mockPlayer.addPlayerPlay("BBWW");
+		
+		mastermind.setPlayer(mockPlayer);
+		mastermind.playerPlaysGame();
+		
+		//We check that he loose.
+		assertFalse(mastermind.hasWinned());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		mockPlayer = new MockPlayer();
+		
+		//The player uses all his attempts and wins the game.
+		
+		//We use the SecretCode MockObject to set our secretCode.
+		mockSecretCode.setSecretCode("BRWY");
+		mastermind.setSecretCode(mockSecretCode);
+		
+		//We fill the record of plays of out player (MockPlayer).
+		mockPlayer.addPlayerPlay("OOOO");
+		mockPlayer.addPlayerPlay("SJDU");
+		mockPlayer.addPlayerPlay("VRWB");
+		mockPlayer.addPlayerPlay("BBRR");
+		mockPlayer.addPlayerPlay("123");
+		mockPlayer.addPlayerPlay("OOOO");
+		mockPlayer.addPlayerPlay("RRBB");
+		mockPlayer.addPlayerPlay("BRWO");
+		mockPlayer.addPlayerPlay("12345");
+		mockPlayer.addPlayerPlay("RWYB");
+		mockPlayer.addPlayerPlay("YYYY");
+		mockPlayer.addPlayerPlay("BBBB");
+		mockPlayer.addPlayerPlay("0201");
+		mockPlayer.addPlayerPlay("WWBB");
+		mockPlayer.addPlayerPlay("BBWW");
+		mockPlayer.addPlayerPlay("1");
+		mockPlayer.addPlayerPlay("BRWY");
+		
+		mastermind.setPlayer(mockPlayer);
+		mastermind.playerPlaysGame();
+		
+		//We check that he wins.
+		assertTrue(mastermind.hasWinned());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		mockPlayer = new MockPlayer();
+		
+		//The player uses some attempts and wins the game.
+		
+		//We use the SecretCode MockObject to set our secretCode.
+		mockSecretCode.setSecretCode("BRWY");
+		mastermind.setSecretCode(mockSecretCode);
+		
+		//We fill the record of plays of out player (MockPlayer).
+		mockPlayer.addPlayerPlay("OOOO");
+		mockPlayer.addPlayerPlay("SJDU");
+		mockPlayer.addPlayerPlay("VRWB");
+		mockPlayer.addPlayerPlay("BBRR");
+		mockPlayer.addPlayerPlay("123");
+		mockPlayer.addPlayerPlay("OOOO");
+		mockPlayer.addPlayerPlay("RRBB");
+		mockPlayer.addPlayerPlay("BRWO");
+		mockPlayer.addPlayerPlay("BRWY");
+				
+		mastermind.setPlayer(mockPlayer);
+		mastermind.playerPlaysGame();
+		
+		//We check that he wins.
+		assertTrue(mastermind.hasWinned());
+		
+	}
 }
