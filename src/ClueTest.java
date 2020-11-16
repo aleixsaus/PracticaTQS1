@@ -79,7 +79,7 @@ public class ClueTest {
 	}
 	
 	@Test
-	public void sortClue() {
+	public void sortClueTest() {
 		//Condition coverage.
 		
 		//Unsorted clue.

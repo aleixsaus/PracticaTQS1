@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Player implements InterfacePlayer{
 
 	private Scanner scanner = new Scanner(System.in);
-
+	
 	//User interaction, we use the mockObject to testing.
     public String enterCode() {
     		System.out.println("Colors:");
@@ -26,6 +26,7 @@ public class Player implements InterfacePlayer{
 			}
     }
     
+    //Can not be tested.
     public void printColorsList() {
     	for (Entry<Character, String> color : Mastermind.COLORS.entrySet()) {
 		    Character colorCode = color.getKey();
@@ -34,6 +35,54 @@ public class Player implements InterfacePlayer{
 		    System.out.println(" " + colorCode + ": " + colorValue);
 		}
     }
+    
+	//User interaction, we use the mockObject to testing.
+    public int enterDifficult() {
+    		System.out.println("Select  difficult:");
+    		
+    		printColorsList();
+    		
+    		System.out.println("What difficulty do you want to play on? 1 - 8");
+    		
+			if (scanner.hasNextLine()) {
+				String response = scanner.nextLine().toUpperCase().trim();
+				
+		    	//We check if the entered difficult is null.
+				if(response == null || !tryParseInt(response)) {
+					System.out.println("The entered difficult is NULL.");
+					return 0;
+				}
+				
+				return checkDifficult(Integer.parseInt(response));
+			} else {
+				return 0;
+			}
+    }
+    
+    
+   //Checks if the entered difficult has the expected format.
+    public int checkDifficult(int difficult) {
+    	//Decision Coverage.
+    		
+		//We check that the entered difficult has the possible values.
+		if(difficult <= 8 && difficult > 0) {			
+			System.out.print("Difficult set to: " + difficult);
+			return difficult;
+		} else {
+			System.out.println("The difficult must be between 1 and 8.");
+			return 0;
+		}
+	}
+    
+    //Utility function to check if a string can be converted to integer.
+    public boolean tryParseInt(String value) {  
+        try {  
+            Integer.parseInt(value);  
+            return true;  
+         } catch (NumberFormatException e) {  
+            return false;  
+         }  
+   } 
     
     //Checks if the entered code has the expected format.
     public boolean checkEnteredCode(String code) {

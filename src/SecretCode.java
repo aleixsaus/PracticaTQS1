@@ -33,6 +33,7 @@ public class SecretCode implements InterfaceSecretCode {
     }
 	
 	//Checks if the entered code and the secret code are equals.
+	//Tested in mockObject.
 	public boolean checkSecretCode(String code) {	
 		if(this.secretcode.equals(code)) {
 			System.out.println("The Secret Code was: " + this.secretcode); 

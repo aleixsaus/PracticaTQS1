@@ -150,9 +150,132 @@ public class MastermindTest {
 		assertFalse(mastermind.hasFinished());
 	}
 	
+	@Test
+	//MOCKOBJECT - MOCKPLAYER
+	public void playerSetDifficultTest() {
+			
+		ArrayList<String> colorsToPlayResult = new ArrayList<String>();			
+
+		//Loop testing - No loop execute
+		
+		int expectedSize = 0;	
+		mockPlayer.setPlayerDifficult("0");
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		
+		//Loop testing - One loop execute
+		
+		expectedSize = 1;
+		mockPlayer.setPlayerDifficult("1");
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		
+		//Loop testing - Two loop execute
+		
+		expectedSize = 2;
+		mockPlayer.setPlayerDifficult("2");
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		
+		//Loop testing - M loop execute (M < Max)
+		
+		expectedSize = 4;
+		mockPlayer.setPlayerDifficult("4");
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		
+		//Loop testing - One less than the maximum
+		
+		expectedSize = 7;
+		
+		mockPlayer.setPlayerDifficult("7");
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();		
+
+		//Loop testing - Maximum iterations
+		
+		expectedSize = 8;
+		
+		mockPlayer.setPlayerDifficult("8");
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		
+		//Loop testing - One more than the maximum iterations
+		
+		expectedSize = 0;
+
+		mockPlayer.setPlayerDifficult("9");		
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();
+		
+		//Loop testing - Negative control variable
+		
+		expectedSize = 0;
+		
+		mockPlayer.setPlayerDifficult("-1");
+		mastermind.setPlayer(mockPlayer);
+		mastermind.setDifficult(mastermind.playerSetsDifficult());
+		
+		colorsToPlayResult = mastermind.getColorsToPlay();
+		
+		assertEquals(expectedSize, colorsToPlayResult.size());
+		
+		//Reset objects...
+		mastermind = new Mastermind();	
+	}
+	
 	//MOCKOBJECT - MOCKPLAYER AND MOCKSECRETCODE - TWO MOCKOBJECTS
 	@Test
-	public void elJugadorJugaTest() {
+	public void playerPlaysGameTest() {
 		
 		//The player uses all his attempts and loses the game.
 		
@@ -245,7 +368,6 @@ public class MastermindTest {
 		mastermind.playerPlaysGame();
 		
 		//We check that he wins.
-		assertTrue(mastermind.hasWinned());
-		
+		assertTrue(mastermind.hasWinned());		
 	}
 }

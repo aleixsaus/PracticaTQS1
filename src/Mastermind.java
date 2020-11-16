@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class Mastermind {
 
-	static final int LENGTH_CODE = 4;
+	static int LENGTH_CODE = 4;
 	static final int MAX_ATTEMPTS = 12;
 	
 	static final HashMap<Character, String> COLORS = new HashMap<Character, String>();
@@ -19,6 +19,7 @@ public class Mastermind {
 		COLORS.put('P', "Pink");
 	}
 	
+	
 	private int attempts;
 	
 	//NEEDED FOR THE MOCKOBJECTS
@@ -28,6 +29,7 @@ public class Mastermind {
 	private boolean hasFinished;
 	private boolean hasWinned;
 	private ArrayList<String> attemptsRecord;
+	private ArrayList<String> colorsToPlay;
 
 	
 	public int getAttempts() {
@@ -37,27 +39,22 @@ public class Mastermind {
 	public void setAttempts(int attempts) {
 		this.attempts = attempts;
 	}
+	
+	public ArrayList<String> getColorsToPlay() {
+		return colorsToPlay;
+	}
 		
 	public Mastermind() {
 		iSecretCode = new SecretCode();
 		gameBoard = new GameBoard();
 		iPlayer = new Player();
-		
+		colorsToPlay = new ArrayList<String>();
 		attemptsRecord = new ArrayList<String>();
 	}
 	
 	//USES MOCKOBJECT OF SECRET CODE
 	public boolean checkCode(String code) {
 		return iSecretCode.checkSecretCode(code);
-	}
-	
-	//USES MOCKOBJECT OF SECRET CODE
-	public Clue createClue(Code code) {
-		return Clue.createClue(code, iSecretCode.getSecretCode());
-	}
-	
-	public String sortClue(String unsortedClue) {
-		return Clue.sortClue(unsortedClue);
 	}
 	
 	public void addCodeToGameBoard(Code code, GameBoard gameBoard) {
@@ -78,7 +75,7 @@ public class Mastermind {
 		return (this.attempts < MAX_ATTEMPTS);
 	}
 	
-	//We simulate a player playing with the MOCK OBJECT - MOCKJUGADOR
+	//We simulate a player playing with the MOCK OBJECT - MOCKPLAYER
 	public void playerPlaysGame() {
 		attempts = 0;
 		while(!hasFinished) {
@@ -97,11 +94,25 @@ public class Mastermind {
 		}
 	}
 	
+	//We simulate a player setting difficult with the MOCK OBJECT - MOCKPLAYER
+	public int playerSetsDifficult() {
+		return iPlayer.enterDifficult(); 
+	}
+	
+	//Sets the difficult of the game.
+	public void setDifficult(int playerDifficult) {
+		for (int i = 0; i < playerDifficult; i++) {
+			Object firstKey = Mastermind.COLORS.keySet().toArray()[i];
+			String valueForFirstKey = Mastermind.COLORS.get(firstKey);
+			
+			colorsToPlay.add(valueForFirstKey);
+		}
+	}
+	
 	//Initialize the game and start it
 	//USES MOCKOBJECT OF SECRET CODE
 	public void enterCode(String code) {
         hasFinished = false;
-        if (hasAttempts()) {              
 	        if (!checkCode(code)) {
 	            System.out.println("You have failed!");
 	            addCodeToGameBoard(new Code(code), gameBoard);
@@ -117,9 +128,6 @@ public class Mastermind {
 	            hasWinned = true;
 	            System.out.println("You have won!");
 	        }
-        } else {
-        	System.out.println("You have lost!");
-        }
     }
 	
 	//FUNCTION TO TEST THE MOCK OBJECTS WITH OUR MOCK
